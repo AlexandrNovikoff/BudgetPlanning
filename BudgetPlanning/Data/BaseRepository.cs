@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Data
 {
-    public abstract class BaseRepository<TEntity> : DbContext, IBaseRepository<TEntity> where TEntity : BaseEntity
+    public class BaseRepository<TEntity> : DbContext, IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly DbSet<TEntity> _dbSet;
 
@@ -57,6 +57,12 @@ namespace Data
             }
 
             SaveChanges();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<TEntity>();
         }
     }
 }
