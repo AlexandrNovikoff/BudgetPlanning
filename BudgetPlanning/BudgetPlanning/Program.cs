@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Domain.Roles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace BudgetPlanning
     {
         static void Main(string[] args)
         {
+            Role role = new Role();
         }
     }
 }

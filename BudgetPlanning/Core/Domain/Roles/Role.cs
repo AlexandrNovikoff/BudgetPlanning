@@ -1,20 +1,27 @@
-﻿using System;
+﻿using Core.Domain.Customers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Domain.Roles
 {
     public class Role : BaseEntity
     {
+        public string Name { get; set; }
+
         public int RoleTypeId { get; set; }
 
         public RoleType RoleType
         {
-            get => (RoleType)RoleTypeId;
+            get
+            {
+                return (RoleType)RoleTypeId;
+            }
 
-            set => RoleTypeId = (int) value;
+            set
+            {
+                RoleTypeId = (int)value;
+            }
         }
+
+        public ICollection<Customer> Customers { get; set; }
     }
 }
