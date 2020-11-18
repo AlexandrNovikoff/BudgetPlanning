@@ -1,24 +1,27 @@
 ﻿using Core;
+using Core.Domain.Customers;
+using Data.Maping;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
 namespace Data
 {
-    public class BaseRepository<TEntity> : DbContext, IBaseRepository<TEntity> where TEntity : BaseEntity
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly DbSet<TEntity> _dbSet;
+        private readonly DbContext _dbContext;
 
-        public BaseRepository(DbContextOptions dbContextOptions)
-            : base(dbContextOptions)
+        public BaseRepository(DbContext dbContext)
         {
-            _dbSet = Set<TEntity>();
+            this._dbContext = dbContext;
+            _dbSet = dbContext.Set<TEntity>();
         }
 
         public void Create(TEntity item)
         {
             _dbSet.Add(item);
-            SaveChanges();
+            _dbContext.SaveChanges();
         }
 
         public TEntity FindById(Guid id)
@@ -34,35 +37,29 @@ namespace Data
         public void Remove(TEntity item)
         {
             _dbSet.Remove(item);
-            SaveChanges();
+            _dbContext.SaveChanges();
         }
 
         public void Remove(IEnumerable<TEntity> items)
         {
             _dbSet.RemoveRange(items);
-            SaveChanges();
+            _dbContext.SaveChanges();
         }
 
         public void Update(TEntity item)
         {
-            Entry(item).State = EntityState.Modified;
-            SaveChanges();
+            _dbContext.Entry(item).State = EntityState.Modified;
+            _dbContext.SaveChanges();
         }
 
         public void Update(IEnumerable<TEntity> items)
         {
             foreach (TEntity item in items)
             {
-                Entry(item).State = EntityState.Modified;
+                _dbContext.Entry(item).State = EntityState.Modified;
             }
 
-            SaveChanges();
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<TEntity>();
+            _dbContext.SaveChanges();
         }
     }
 }

@@ -12,15 +12,19 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            var builder = new ContainerBuilder();
-            DbContextOptions dbContextOptions = SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Repositories\BudgetPlanning\BudgetPlanning\Data\Data.mdf;Integrated Security=True").Options;
-            builder.RegisterInstance<DbContextOptions>(dbContextOptions);
+            ContainerBuilder builder = new ContainerBuilder();
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Repositories\BudgetPlanning\BudgetPlanning\Data\Data.mdf;Integrated Security=True";
+            builder.RegisterInstance(SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options);
+            builder.RegisterType<BudgetPlanningDbContext>().As<DbContext>();
             IContainer r =  builder.Build();
 
-            CustomerRepository customerRepository = new CustomerRepository(r.Resolve<DbContextOptions>());
-            customerRepository.Database.EnsureCreated();
-            var customer = customerRepository.GetQuery().First();
-            customerRepository.Create(customer);
+            CustomerRepository customerRepository = new CustomerRepository(r.Resolve<DbContext>());
+            
+            customerRepository.Create(new Customer
+            {
+                Name = "Alexandr",
+                Email = "123123@.com"
+            });
 
             Console.WriteLine("Hello World!");
         }

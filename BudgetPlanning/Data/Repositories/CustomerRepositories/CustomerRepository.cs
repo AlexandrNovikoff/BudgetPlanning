@@ -5,7 +5,7 @@ namespace Data.Repositories.CustomerRepositories
 {
     public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
-        public CustomerRepository(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public CustomerRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }
