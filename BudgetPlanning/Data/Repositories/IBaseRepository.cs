@@ -1,8 +1,8 @@
-﻿using Core;
+﻿using Novikov.Core;
 using System;
 using System.Collections.Generic;
 
-namespace Data
+namespace Novikov.Data.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : BaseEntity
     {

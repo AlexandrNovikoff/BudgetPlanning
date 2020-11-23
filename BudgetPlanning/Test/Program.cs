@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using Core.Domain.Customers;
-using Data;
-using Data.Repositories.CustomerRepositories;
+using Novikov.Core.Domain.Customers;
 using Microsoft.EntityFrameworkCore;
+using Novikov.Data;
+using Novikov.Data.Repositories.CustomerRepositories;
 using System;
 using System.Linq;
 

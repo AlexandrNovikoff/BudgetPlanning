@@ -1,6 +1,6 @@
-﻿using Core.Domain.Customers;
+﻿using Novikov.Core.Domain.Customers;
 
-namespace Data.Repositories.CustomerRepositories
+namespace Novikov.Data.Repositories.CustomerRepositories
 {
     public interface ICustomerRepository : IBaseRepository<Customer>
     {

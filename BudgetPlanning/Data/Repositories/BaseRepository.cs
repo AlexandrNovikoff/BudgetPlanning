@@ -1,11 +1,11 @@
-﻿using Core;
-using Core.Domain.Customers;
-using Data.Maping;
+﻿using Novikov.Core.Domain.Customers;
+using Novikov.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using Novikov.Core;
 
-namespace Data
+namespace Novikov.Data.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
@@ -14,7 +14,7 @@ namespace Data
 
         public BaseRepository(DbContext dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();
         }
 

@@ -1,8 +1,8 @@
-﻿using Core.Domain.Customers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Novikov.Core.Domain.Customers;
 
-namespace Data.Maping
+namespace Novikov.Data.Mapping
 {
     public class CustomerMap : IEntityTypeConfiguration<Customer>
     {

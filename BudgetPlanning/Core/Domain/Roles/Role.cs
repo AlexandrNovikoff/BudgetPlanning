@@ -1,7 +1,7 @@
-﻿using Core.Domain.Customers;
+﻿using Novikov.Core.Domain.Customers;
 using System.Collections.Generic;
 
-namespace Core.Domain.Roles
+namespace Novikov.Core.Domain.Roles
 {
     public class Role : BaseEntity
     {

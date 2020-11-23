@@ -1,7 +1,7 @@
-﻿using Core.Domain.Roles;
+﻿using Novikov.Core.Domain.Roles;
 using System;
 
-namespace Core.Domain.Customers
+namespace Novikov.Core.Domain.Customers
 {
     public class Customer : BaseEntity
     {
@@ -13,7 +13,7 @@ namespace Core.Domain.Customers
 
         public string Login { get; set; }
 
-        public string PhoneNumber {get;set;}
+        public string PhoneNumber { get; set; }
 
         //public Guid RoleId { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace Core.Domain.Roles
+﻿namespace Novikov.Core.Domain.Roles
 {
     public enum RoleType
     {

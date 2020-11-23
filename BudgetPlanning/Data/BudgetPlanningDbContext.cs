@@ -1,7 +1,7 @@
-﻿using Data.Maping;
+﻿using Novikov.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace Data
+namespace Novikov.Data
 {
     public class BudgetPlanningDbContext : DbContext
     {

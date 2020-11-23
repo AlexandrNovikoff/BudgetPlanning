@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core
+namespace Novikov.Core
 {
     public abstract class BaseEntity
     {

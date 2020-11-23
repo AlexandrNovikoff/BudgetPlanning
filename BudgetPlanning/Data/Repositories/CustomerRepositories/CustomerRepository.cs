@@ -1,7 +1,7 @@
-﻿using Core.Domain.Customers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Novikov.Core.Domain.Customers;
 
-namespace Data.Repositories.CustomerRepositories
+namespace Novikov.Data.Repositories.CustomerRepositories
 {
     public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
